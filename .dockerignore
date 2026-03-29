@@ -1,0 +1,9 @@
+.dockerignore
+.git
+.github
+.gitignore
+.env
+.env.example
+data/
+.venv/
+__pycache__/
