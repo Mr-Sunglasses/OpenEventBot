@@ -4,18 +4,25 @@
   </a>
 </p>
 
-# OpenEvent_bot
+<h1 align="center">OpenEvent_bot</h1>
 
-A Telegram bot for creating events in groups with RSVP support. Group members can RSVP with a single tap — no more "I'm in" spam in the chat.
+<p align="center">
+  A Telegram bot for creating events in groups with RSVP support.<br>
+  Group members can RSVP with a single tap — no more "I'm in" spam in the chat.
+</p>
 
-![Event Bot Screenshot](assets/demo_openevent.png)
+<p align="center">
+  <img src="assets/demo_openevent.png" width="500" alt="Event Bot Screenshot">
+</p>
 
 ## Features
 
 - Create events with `/event <description>`
+- Attach an image banner to events
 - RSVP with inline buttons (Going / Can't go)
 - Live attendee list updated in real time
-- Markdown support in event descriptions
+- Admin-only event creation and deletion
+- HTML formatting support in event descriptions
 - SQLite-backed persistence
 - Fully in English
 
@@ -31,13 +38,13 @@ A Telegram bot for creating events in groups with RSVP support. Group members ca
 
 1. Clone this repository.
 2. Copy `.env.example` to `.env` and set your `BOT_TOKEN`:
-   ```
+   ```bash
    cp .env.example .env
    ```
 3. Install dependencies and run:
-   ```
-uv sync
-uv run openevent-bot
+   ```bash
+   uv sync
+   uv run openevent-bot
    ```
 
 ### Docker
@@ -53,7 +60,7 @@ docker compose up -d
 ### Adding to a group
 
 1. Add the bot to your Telegram group.
-2. Promote it to admin with "Delete Messages" permission (so it can replace `/event` messages).
+2. Promote it to admin with **Delete Messages** permission (so it can replace `/event` messages).
 3. Type `/event <description>` to create an event.
 
 ### Creating an event
@@ -62,7 +69,9 @@ docker compose up -d
 /event Friday board game night at 7pm 🎲
 ```
 
-Members then tap **✅ Going** or **❌ Can't go** to RSVP. The event message updates live with the attendee list.
+Or attach a photo with the caption `/event <description>` to add an image banner.
+
+Members then tap **Going** or **Can't go** to RSVP. The event message updates live with the attendee list.
 
 ### Commands
 
@@ -70,7 +79,7 @@ Members then tap **✅ Going** or **❌ Can't go** to RSVP. The event message up
 |---|---|
 | `/start` | Introduction and help |
 | `/help` | Show usage instructions |
-| `/event <text>` | Create a new event |
+| `/event <text>` | Create a new event (admins only) |
 
 ## Tech Stack
 
