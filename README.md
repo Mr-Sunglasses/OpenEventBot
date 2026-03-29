@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://t.me/opentgytbot">
+  <a href="https://t.me/OpenEvent_bot">
     <img src="https://img.shields.io/badge/Use%20Bot-Open%20Telegram-blue" alt="Use Bot">
   </a>
 </p>
 
-<h1 align="center">OpenEvent_bot</h1>
+<h1 align="center">OpenEventBot</h1>
 
 <p align="center">
   A Telegram bot for creating events in groups with RSVP support.<br>
