@@ -153,8 +153,36 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     await start(update, context)
 
 
+async def _dm_guide(update: Update) -> None:
+    text = (
+        "👋 <b>Hey there!</b>\n\n"
+        "This bot is designed to be used in <b>Telegram groups</b>, not in private messages.\n\n"
+        "📖 <b>How to get started:</b>\n\n"
+        "1️⃣ <b>Add the bot to your group</b>\n"
+        "   Open your group → Info → Add Members → search for this bot\n\n"
+        "2️⃣ <b>Make the bot an admin</b>\n"
+        "   Group Info → Edit → Administrators → Add Admin → select the bot\n"
+        "   Grant it <b>Delete Messages</b> permission\n\n"
+        "3️⃣ <b>Create an event</b>\n"
+        "   In the group, type:\n"
+        "   <code>/event Friday board game night at 7pm 🎲</code>\n\n"
+        "4️⃣ <b>Members RSVP</b>\n"
+        "   Everyone can tap <b>✅ Going</b> or <b>❌ Can't go</b>\n"
+        "   The event updates live with the attendee list\n\n"
+        "5️⃣ <b>Image banners</b>\n"
+        "   Attach a photo with caption <code>/event description</code> for a banner\n\n"
+        "💡 Only group <b>admins</b> can create and delete events.\n\n"
+        "Add me to a group to get started! 🚀"
+    )
+    await update.message.reply_text(text, parse_mode="HTML")
+
+
 async def create_event(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not update.message or not update.effective_chat:
+        return
+
+    if update.effective_chat.type == "private":
+        await _dm_guide(update)
         return
 
     if not await _is_admin(update, context):
